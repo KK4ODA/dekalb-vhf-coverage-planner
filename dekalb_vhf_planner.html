@@ -10,6 +10,7 @@
   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
   :root{--bg0:#0a0e14;--bg1:#111822;--bg2:#1a2332;--bg3:#141c28;--brd:#243044;--t1:#e0e6ee;--t2:#8899aa;--t3:#556677;--ac:#1ecaa3;--ab:#3a7bd5;--ar:#e85454;--ag:#2ed47a;--aa:#e8a838;--ap:#9b6dff;--mono:'JetBrains Mono',monospace;--sans:'IBM Plex Sans',-apple-system,sans-serif}
   .dark-tiles{filter:brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7)}
+  .esri-dark{filter:brightness(0.7) saturate(0.5)}
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:var(--sans);background:var(--bg0);color:var(--t1);height:100vh;display:flex;overflow:hidden}
   .sidebar{width:400px;min-width:400px;height:100vh;background:var(--bg1);border-right:1px solid var(--brd);display:flex;flex-direction:column;overflow:hidden}
@@ -330,7 +331,7 @@ function terrainLoss(lat1,lon1,hAnt1_m, lat2,lon2,hAnt2_m, freqMHz){
 // MAP
 // ============================================================
 const map=L.map('map',{center:[33.79,-84.22],zoom:11});
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',className:'dark-tiles'}).addTo(map);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,attribution:'Esri, HERE, Garmin, &copy; OpenStreetMap contributors'}).addTo(map);L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16}).addTo(map);
 
 (async()=>{try{const r=await fetch('https://nominatim.openstreetmap.org/search?q=DeKalb+County+Georgia+USA&format=geojson&polygon_geojson=1&limit=1',{headers:{'User-Agent':'DeKalbVHFPlanner/1.0'}});const d=await r.json();if(d.features&&d.features.length>0){const bnd=L.geoJSON(d.features[0].geometry,{style:{color:'#1ecaa3',weight:2.5,opacity:.85,fillColor:'#1ecaa3',fillOpacity:.04,dashArray:'8 5'},interactive:false}).addTo(map);map.fitBounds(bnd.getBounds().pad(0.05))}}catch(e){}})();
 
