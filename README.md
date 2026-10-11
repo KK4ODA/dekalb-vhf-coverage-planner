@@ -55,6 +55,18 @@ Open `dekalb_vhf_planner.html` in any modern web browser. No server, build step,
 - **Map:** Leaflet.js with CartoDB Dark Matter tiles
 - **County boundary:** OSM Nominatim GeoJSON (fetched at load)
 
+<!-- tota-support:start -->
+## Support
+
+DeKalb County VHF Coverage Planner is free and stays free. It is written by KK4ODA, who also runs
+[Tiles on the Air](https://tilesontheair.com), a free program for portable
+operators, and both are kept going by the people who use them. If DeKalb County VHF Coverage Planner is
+useful to you, a contribution through the
+[Tiles on the Air giving page](https://tilesontheair.com/Giving) helps keep this tool and Tiles
+running. Nothing is ever locked behind it, and a bug report or an on-air
+report helps just as much.
+<!-- tota-support:end -->
+
 ## License
 
 MIT
